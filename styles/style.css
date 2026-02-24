@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color1: rgb(128, 97, 241);
+    --main-color2: indigo;
+    --orange-color: rgb(255, 128, 0);
+    --cancle-color: rgb(189, 0, 57);
+    --error-color: rgb(255, 0, 0);
+    --drag-color: rgba(97, 241, 97, 0.5);
+    --drag-border-color: rgb(73, 194, 73);
+    --ongoing-color: rgb(153, 209, 255);
+    --ongoing-border-color: rgb(0, 119, 167);
+    --finished-color: rgb(0, 201, 90);
+    --finished-border-color: rgb(0, 109, 0);
+    --not-started-color: rgb(255, 153, 153);
+    --not-started-border-color: rgb(179, 0, 0);
+}
+
+body {
+    background: linear-gradient(to right, var(--main-color1), var(--main-color2));
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/** start modal style */
+dialog {
+    width: 400px;
+    min-height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: none;
+
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.582);
+}
+
+dialog h3 {
+    margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
+
+}
+
+dialog span {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: small;
+    color: gray;
+}
+
+dialog input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid rgb(196, 193, 193);
+    outline: none;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    font-size: medium;
+}
+
+dialog input:focus {
+    outline: 2px solid var(--main-color1);
+    border-color: var(--main-color1);
+}
+
+dialog button {
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: linear-gradient(to right, var(--main-color1), var(--main-color2));
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+}
+#names-error {
+    font-size: small;
+    padding: 0 5px 5px 5px;
+}
+/* * end modal style */
+/* ---------------------------------------------------------------------------------*/
+/*& start main header style */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: white;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+/* ---------------------------------------------------------------------------------*/
+/*~ start add task style */
+article,
+.team-card {
+    min-height: 250px;
+    max-height: fit-content;
+    width: fit-content;
+    background-color: rgb(243, 240, 240);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: none;
+}
+
+.tasks-header,
+.team-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tasks-header span:first-child,
+.team-head span:first-child {
+    font-weight: bold;
+}
+
+#tasks-board-count,
+.member-tasks-count {
+    background-color: var(--orange-color);
+    width: 30px;
+    height: 30px;
+    color: white;
+    padding: 6px 5px;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.board-add-actions {
+    display: flex;
+    gap: 10px;
+}
+
+#taskInput {
+    padding: 8px 10px;
+    border: 1px solid rgb(196, 193, 193);
+    outline: none;
+    border-radius: 5px;
+    font-size: medium;
+}
+
+#taskInput:focus {
+    outline: 2px solid var(--orange-color);
+    border-color: var(--orange-color);
+}
+
+#addTaskButton {
+    padding: 8px 10px;
+    height: inherit;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: var(--orange-color);
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#addTaskButton:hover {
+    opacity: 0.8;
+}
+
+.no-data {
+    margin-top: 20px;
+    color: gray;
+    font-size: small;
+    text-align: center;
+}
+
+.error {
+    color: var(--error-color);
+}
+
+.hidden {
+    display: none;
+}
+
+#tasksBoard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    min-height: 90px;
+    max-height: fit-content;
+    margin-top: 10px;
+    padding: 20px 10px;
+}
+
+.task-item {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    background-color: white;
+    transition: all 0.3s ease;
+    cursor: grab;
+}
+
+.task-item .task-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.task-item:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+
+.task-item .delete-task-btn {
+    background-color: var(--cancle-color);
+    opacity: 0.8;
+
+    border: none;
+    color: white;
+    padding: 6px 7px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+}
+
+.task-item .delete-task-btn:hover {
+    opacity: 1;
+}
+
+.dragging-board {
+    opacity: 0.5;
+    border: 1px dashed var(--drag-border-color);
+    background-color: var(--drag-color);
+    border-radius: 5px;
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+/*~ end add task style */
+/* ---------------------------------------------------------------------------------*/
+/*^ start team members style */
+.team-members {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-left: 10px;
+    height: fit-content;
+}
+
+.team-card {
+    min-height: 230px;
+    min-width: 300px;
+    transition: all 0.3s ease;
+}
+
+.member-tasks-count {
+    background: var(--main-color1);
+}
+
+.team-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 10px;
+    width: 100%;
+    min-height: 100px;
+}
+
+.has-task-status {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.has-task-status select {
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(196, 193, 193);
+    outline: none;
+    width: 100%;
+
+}
+
+.not-started {
+    background-color: var(--not-started-color);
+    border-left: 5px solid var(--not-started-border-color);
+}
+
+.ongoing {
+    background-color: var(--ongoing-color);
+    border-left: 5px solid var(--ongoing-border-color);
+}
+
+.finished {
+    background-color: var(--finished-color);
+    border-left: 5px solid var(--finished-border-color);
+}

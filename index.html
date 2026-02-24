@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <dialog style="display: none">
+      <h3>👨🏽‍🤝‍👨🏻 Set Up Your Team</h3>
+      <span>Enter team member names separated by commas:</span>
+      <input
+        type="text"
+        id="teamInput"
+        placeholder="e.g., Mohamed, Ahmed, Sara"
+        tabindex="0"
+      />
+      <p id="names-error" class="hidden"></p>
+      <button tabindex="0" id="startButton">Created Board</button>
+    </dialog>
+    <header>
+      <h1>ITI Task Management Board</h1>
+    </header>
+    <main>
+      <article>
+        <div class="tasks-header">
+          <span>📝 Tasks Board</span>
+          <span id="tasks-board-count">0</span>
+        </div>
+
+        <div class="board-add-actions">
+          <input
+            tabindex="0"
+            type="text"
+            id="taskInput"
+            placeholder="Add a task"
+          />
+
+          <button tabindex="0" id="addTaskButton">Add</button>
+        </div>
+        <div class="tasks-board" id="tasksBoard">
+          <p class="no-data" id="no-tasks">No tasks yet. Start adding some!</p>
+          <!-- Tasks will be dynamically added here -->
+        </div>
+      </article>
+      <section class="team-members" id="teamMembers">
+        <!-- Team members will be dynamically added here -->
+      </section>
+    </main>
+    <script src="js/script.js"></script>
+  </body>
+</html>
