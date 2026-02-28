@@ -227,6 +227,8 @@ function allowDropOnTeams() {
     // Dragleave: Remove highlight when task leaves the drop zone
     card.addEventListener("dragleave", (e) => {
       e.preventDefault();
+      const toElement = e.relatedTarget;
+      if (card.contains(toElement)) return; // Prevent removing highlight if still within the card
       card.querySelector(".team-tasks").classList.remove("dragging-board");
     });
 
